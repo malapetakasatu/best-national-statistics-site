@@ -185,8 +185,8 @@ export function renderProjectionChart(container, options) {
 
   // Vertical split line at 2024 (Now)
   svg += `
-    <line x1="${splitX}" y1="${padTop}" x2="${splitX}" y2="${height - padBottom}" stroke="#3b82f6" stroke-dasharray="4 4" stroke-width="1.5" />
-    <text x="${splitX}" y="${padTop - 8}" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">TODAY (2024)</text>
+    <line x1="${splitX}" y1="${padTop}" x2="${splitX}" y2="${height - padBottom}" stroke="#1d4ed8" stroke-dasharray="4 4" stroke-width="1.5" />
+    <text x="${splitX}" y="${padTop - 8}" font-size="10" font-weight="700" fill="#1d4ed8" text-anchor="middle">TODAY (2024)</text>
   `;
 
   // Timeline labels
@@ -221,8 +221,8 @@ export function renderProjectionChart(container, options) {
   // Highlight Current 2024 anchor point
   const anchorY = getY(historicalGdp[historicalGdp.length - 1]);
   svg += `
-    <circle cx="${splitX}" cy="${anchorY}" r="5.5" fill="#ffffff" stroke="#6366f1" stroke-width="3" />
-    <text x="${splitX + 8}" y="${anchorY - 6}" font-size="11" font-weight="700" fill="#ffffff" font-family="var(--font-mono)">$1,420.5B</text>
+    <circle cx="${splitX}" cy="${anchorY}" r="5.5" fill="#ffffff" stroke="#1d4ed8" stroke-width="3" />
+    <text x="${splitX + 8}" y="${anchorY - 6}" font-size="11" font-weight="700" fill="var(--text-main)" font-family="var(--font-mono)">$1,420.5B</text>
   `;
 
   // Highlight 2035 terminal point
@@ -288,13 +288,7 @@ export function renderProvincialMapSVG(container, options) {
   let svg = `
     <div class="provincial-map-wrap">
       <svg width="100%" height="${height}" viewBox="0 0 ${width} ${height}" class="provincial-map-svg">
-        <defs>
-          <radialGradient id="oceanGlow" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stop-color="#1e293b" stop-opacity="0.6"/>
-            <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/>
-          </radialGradient>
-        </defs>
-        <rect width="${width}" height="${height}" fill="url(#oceanGlow)" rx="8" />
+        <rect width="${width}" height="${height}" fill="#f8fafc" stroke="var(--border-color)" stroke-width="1" rx="8" />
   `;
 
   provinces.forEach((p) => {
@@ -315,16 +309,16 @@ export function renderProvincialMapSVG(container, options) {
       <g class="map-province-tile" data-id="${p.id}" style="cursor:pointer;">
         <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" 
           fill="${color}" 
-          stroke="${isSelected ? '#38bdf8' : 'rgba(255,255,255,0.18)'}" 
-          stroke-width="${isSelected ? '3' : '1'}"
-          filter="${isSelected ? 'drop-shadow(0 0 8px rgba(56,189,248,0.5))' : 'none'}"
+          stroke="${isSelected ? '#1d4ed8' : '#cbd5e1'}" 
+          stroke-width="${isSelected ? '2.5' : '1'}"
+          filter="${isSelected ? 'drop-shadow(0 0 6px rgba(29,78,216,0.35))' : 'none'}"
         >
           <title>${p.name} - ${displayVal}</title>
         </rect>
-        <text x="${x + w / 2}" y="${y + h / 2 - 4}" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="var(--font-sans)">
+        <text x="${x + w / 2}" y="${y + h / 2 - 4}" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle" font-family="var(--font-sans)">
           ${p.code}
         </text>
-        <text x="${x + w / 2}" y="${y + h / 2 + 12}" font-size="10" font-weight="600" fill="#cbd5e1" text-anchor="middle" font-family="var(--font-mono)">
+        <text x="${x + w / 2}" y="${y + h / 2 + 12}" font-size="10" font-weight="700" fill="#f8fafc" text-anchor="middle" font-family="var(--font-mono)">
           ${displayVal}
         </text>
       </g>
@@ -515,13 +509,13 @@ export function renderDonutChart(container, options) {
       Z
     `;
 
-    svg += `<path d="${dPath}" fill="${color}" stroke="#ffffff" stroke-width="1.5"><title>${item.sector}: ${item.share}% ($${item.gdpBillion}B)</title></path>`;
+    svg += `<path d="${dPath}" fill="${color}" stroke="#ffffff" stroke-width="2"><title>${item.sector}: ${item.share}% ($${item.gdpBillion}B)</title></path>`;
     currentAngle = endAngle;
   });
 
   svg += `
-        <text x="${cx}" y="${cy - 4}" font-size="11" fill="var(--text-muted)" text-anchor="middle">TOTAL GDP</text>
-        <text x="${cx}" y="${cy + 16}" font-size="15" font-weight="700" fill="var(--text-main)" text-anchor="middle">$1.42T</text>
+        <text x="${cx}" y="${cy - 4}" font-size="11" fill="var(--text-muted)" text-anchor="middle" font-weight="600">TOTAL GDP</text>
+        <text x="${cx}" y="${cy + 16}" font-size="15" font-weight="800" fill="var(--text-main)" text-anchor="middle">$1.42T</text>
       </svg>
       <div class="donut-legend">
         ${data
