@@ -13,38 +13,43 @@ Published by the **Central Statistical Institute (StatVeridia)** adhering to int
 ## 🏛️ Portal Highlights & Core Sections
 
 1. **Executive Overview (`#/`)**:
-   - High-level national KPI strip with 10-year sparkline trajectories (Population, GDP, Per Capita, Inflation CPI, Unemployment Rate, Public Debt-to-GDP, Clean Energy Share, Life Expectancy).
-   - 10-Year Macroeconomic Trajectory interactive dual-axis line chart (Nominal GDP vs. Real Growth %).
+   - High-level national KPI strip with 10-year sparkline trajectories (Population, GDP, Per Capita, Inflation CPI, Unemployment Rate, Public Debt-to-GDP, Clean Energy Share, Trade Surplus).
+   - **Simulated Live Census Population Clock**: Real-time incrementing citizen counter reflecting +0.58% net annual demographic growth.
+   - **10-Year Forward Forecasting & Scenario Simulator (2025–2035)**: Dynamic macroeconomic projections under 3 distinct policy pathways (Consensus Baseline, Green Industrial Acceleration, Global Headwinds) complete with uncertainty envelope.
+   - 10-Year Macroeconomic Trajectory interactive dual-axis line chart (Nominal GDP vs. Merchandise Trade Balance).
    - 2024 GDP Composition by Economic Sector interactive donut chart.
-   - Highlights & key demographic/social indicators.
+   - Official Statistical Bulletins & Gazettes feed.
 
 2. **Economy & Trade (`#/economy`)**:
-   - Comprehensive national accounts overview (Gross Capital Formation, Household Consumption, Central Bank Policy Rate, Government Balance).
+   - Bilateral Trading Partners Breakdown: Export and import volumes with major economic blocs (Nordic Commonwealth, Atlantic Federation, Pacific Rim).
+   - Sovereign Fiscal Balance & 10-Year Bond Yields (General Government Revenue, Appropriated Expenditure, Deficit compliance).
    - Trade Balance & Merchandise Flow time series (Exports vs. Imports, 2015–2024).
    - Price Stability & Monetary Stance (Headline CPI vs. Policy Rate).
-   - Full economic sector breakdown table with output values in USD Billions, percentage shares, and YoY growth rates.
+   - Full economic sector breakdown table with output values in USD Billions, percentage shares, and real growth rates.
 
 3. **Demographics & Census (`#/demographics`)**:
-   - Bi-lateral Population Age Pyramid (0–4 through 85+ cohorts, Male vs. Female distribution across 58.42M citizens).
-   - Census key metrics (Median Age, Total Fertility Rate, Urbanization Ratio, Net Annual Migration).
-   - Detailed tabular census cohort breakdown with male/female totals and gender ratios.
+   - Bi-lateral Population Age Pyramid (0–4 through 85+ cohorts, Male vs. Female distribution across 58.43M citizens).
+   - Census key metrics (Median Age, Total Fertility Rate, Urbanization Ratio, Dependency status).
+   - Detailed tabular census cohort breakdown with male/female totals, percentage of population, and labor force classification.
 
 4. **Provinces & Regional Accounts (`#/regional`)**:
-   - Granular breakdown across all 8 administrative provinces (Capital District, Northumbria Maritime, Eldoria Industrial Heartland, Sunbelt Agricultural Valley, Zephyr Coastal Basin, Iron Peak Highlands, Sylvan Forestry Region, Frontier Special Economic Zone).
-   - Regional population, regional GDP output, per-capita income, unemployment rate, surface area, economic pillars, and administrative highlights.
-   - Fully optimized mobile viewport layout for on-the-go citizen access.
+   - **Interactive Territorial Grid & Choropleth Map**: Dynamic SVG vector map of Veridia's 8 administrative territories with real-time metric coloring (GDP per capita, population, clean energy share, unemployment).
+   - **Bilateral Regional Benchmarking Tool**: Side-by-side comparative metric analysis between any two selected provinces with visual delta comparison bars.
+   - Granular profile cards for all 8 administrative provinces including regional GDP output, per-capita income, fiber optic coverage, hospital beds per 1,000, and economic pillars.
 
 5. **Data Explorer & Open Data Dissemination (`#/data`)**:
+   - Category filter chips (All, Macroeconomic, Industry Sectors, Regional Atlas, Bilateral Trade).
    - Real-time instant filtering across the entire indicator catalog.
-   - One-click client-side export to **CSV format** for analysts, researchers, and journalists.
-   - One-click client-side export to **JSON format** carrying full historical series, regional data, and census records.
+   - One-click client-side export to **CSV format**.
+   - One-click client-side export to **JSON format** carrying full historical series, 2035 projections, regional data, and census records.
+   - **Official Statistical Gazette Communique**: Formatted printable sovereign release with official seal, cryptographic digital verification code, and signatories.
 
 ---
 
 ## 🚀 Architecture & Engineering Standards
 
 - **Zero External Dependencies**: 100% vanilla JavaScript (ES modules), semantic HTML5, and bespoke CSS. No CDN calls, no tracking scripts, completely offline-capable.
-- **Custom Native SVG Charting Engine**: Sparklines, multi-series line charts with area fills and dynamic tooltips, demographic pyramids, and sector donut charts rendered entirely in native SVG.
+- **Custom Native SVG Charting Engine**: Sparklines, multi-series line charts with area fills and dynamic tooltips, demographic pyramids, scenario projections with uncertainty cones, horizontal bar charts, and territorial choropleth maps.
 - **Responsive by Design**: WCAG AAA high-contrast theme, responsive CSS Grid + Flexbox architectures tuned for both 1280x800 desktop workstations and 390x844 mobile devices.
 - **Micro-Footprint**: Fast first-contentful-paint, zero bloat, pure Node 22 stdlib harness.
 
@@ -54,10 +59,10 @@ Published by the **Central Statistical Institute (StatVeridia)** adhering to int
 
 | View | Resolution | Target Route |
 | :--- | :--- | :--- |
-| **Executive Overview** | 1280 × 800 | `#/` |
-| **Economy & Trade** | 1280 × 800 | `#/economy` |
-| **Demographics & Census** | 1280 × 800 | `#/demographics` |
-| **Regional & Mobile View** | 390 × 844 | `#/regional` |
+| **Executive Overview & Forecast Simulator** | 1280 × 800 | `#/` |
+| **Economy & Trade Partners** | 1280 × 800 | `#/economy` |
+| **Territorial Map & Province Benchmarking** | 1280 × 800 | `#/regional` |
+| **Demographics & Mobile Census** | 390 × 844 | `#/demographics` |
 
 ---
 
