@@ -1,18 +1,12 @@
-// StatVeridia - Main Application Router & Controller
-import {
-  renderOverview,
-  renderEconomy,
-  renderDemographics,
-  renderRegional,
-  renderDataExplorer
-} from './views.js';
+// StatVeridia - Main Application Router & Dynamic Loader
+// Standard: UN SNA 2008 & IMF SDDS Plus Compliant
 
 const routes = {
-  '#/': renderOverview,
-  '#/economy': renderEconomy,
-  '#/demographics': renderDemographics,
-  '#/regional': renderRegional,
-  '#/data': renderDataExplorer,
+  '#/': () => import('./views/overview.js').then((m) => m.renderOverview),
+  '#/economy': () => import('./views/economy.js').then((m) => m.renderEconomy),
+  '#/demographics': () => import('./views/demographics.js').then((m) => m.renderDemographics),
+  '#/regional': () => import('./views/regional.js').then((m) => m.renderRegional),
+  '#/data': () => import('./views/data.js').then((m) => m.renderDataExplorer),
 };
 
 function getNormalizedHash() {
@@ -33,18 +27,21 @@ function updateActiveNav(currentRoute) {
   });
 }
 
-export function navigate() {
+export async function navigate() {
   const currentRoute = getNormalizedHash();
   const root = document.getElementById('app-root');
   if (!root) return;
 
-  const renderFn = routes[currentRoute] || routes['#/'];
-  renderFn(root);
+  const loader = routes[currentRoute] || routes['#/'];
+  try {
+    const renderFn = await loader();
+    renderFn(root);
+  } catch (err) {
+    console.error('Route navigation error:', err);
+  }
   updateActiveNav(currentRoute);
 
   window.scrollTo({ top: 0, behavior: 'instant' });
-
-  // Mark page ready for screenshot / test tooling
   window.__shotReady = true;
 }
 
